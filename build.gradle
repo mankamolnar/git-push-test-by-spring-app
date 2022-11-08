@@ -1,0 +1,43 @@
+plugins {
+	id 'org.springframework.boot' version '2.4.4'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'eu.garudaacademy'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	/* JJWT: NECESSARY LIBRARY TO GENERATE WEB TOKENS */
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'/*ok*/
+
+	/* JAXB-API:
+	* Originally it was part of java until Java 9.
+	* With Java 8 you dont have to add to dependencies.
+	* It is a library that JJWT is dependent on.
+	* It is used in the process of generating the tokens. */
+	implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.1'/*ok*/
+
+
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+	implementation 'org.springframework.boot:spring-boot-starter-security' /*ok*/
+	implementation 'org.springframework.boot:spring-boot-starter-web'/*ok*/
+	implementation 'org.projectlombok:lombok:1.18.16'
+	annotationProcessor 'org.projectlombok:lombok:1.18.16'
+	runtimeOnly 'mysql:mysql-connector-java'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'/*ok*/
+	testImplementation 'org.springframework.security:spring-security-test' /*ok*/
+}
+
+test {
+	useJUnitPlatform()
+}
+
+/*  maybe: javax.xml.bind, io.jsonwebtoken */
